@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Result extends Model
+{
+    use HasFactory;
+    protected $table = 'results';
+
+    protected $fillable = [
+        'assignment_id', 'user_id', 'subject_id', 'description', 'source', 'mark', 'status', 'comments'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function assignment()
+    {
+        return $this->belongsTo(Assignment::class, 'assignment_id', 'id');
+    }
+}
