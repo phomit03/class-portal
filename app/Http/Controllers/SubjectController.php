@@ -40,7 +40,6 @@ class SubjectController extends Controller
             ->withCount('assignments')
             ->whereIn('id',$arrSubjectId)
             ->get();
-        //dd($subjects, $arrSubjectId);
 
         if (Auth::user()->role == 'student'){
             return view('pages.student.subject.show_all', compact('subjects'));
@@ -56,9 +55,6 @@ class SubjectController extends Controller
 
         $assignments = $subject->assignments()->orderBy('due_date', 'desc')->get();
 
-        // Grab all the recent activity, which includes
-        // assignments and annoucement, then sort date that
-        // it was created
         $recent_activity = array();
 
         return view('pages.teacher.subject.show', [

@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class IssueController extends Controller
 {
-//    public function list() {
-//        $issues = Issue::all();
-//        return view('layouts.navigation', [
-//            'issues' => $issues
-//        ]);
-//    }
     public function store(Request $request)
     {
         $this->validate($request, [

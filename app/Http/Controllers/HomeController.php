@@ -33,20 +33,9 @@ class HomeController extends Controller
                 return $q->with(['usersIsStudent', 'usersIsTeacher']);
             }])
             ->first();
+
         // lấy class của user đang đăng nhập
         $classes = $user->classes;
-
-//        dd($classes->toArray());
-
-        /*$class1 = Classes::whereHas('users', function ($query){
-            $query->where('user_id', '=', Auth::user()->id);
-        });*/
-
-//        foreach ($classes  as $class){
-//            dd($class->pivot->pivotParent->email);
-//        }
-
-
 
         if (Auth::user()->role == 'teacher'){
             return view('pages.teacher.home', [
